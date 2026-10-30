@@ -1,0 +1,126 @@
+/* ------------------------------------------------------------------
+   KrishiSync AI — global tokens, reset and base typography
+   Theme: agricultural green / white / amber
+   ------------------------------------------------------------------ */
+
+:root {
+  /* greens */
+  --green-950: #0b2f1c;
+  --green-900: #0f3d24;
+  --green-800: #14532d;
+  --green-700: #166534;
+  --green-600: #1a7f3f;
+  --green-500: #22a351;
+  --green-100: #dcfce7;
+  --green-50: #f0fdf4;
+
+  /* amber */
+  --amber-700: #b45309;
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-200: #fde3a7;
+  --amber-100: #fef3c7;
+  --amber-50: #fffbeb;
+
+  /* status */
+  --red-600: #dc2626;
+  --red-100: #fee2e2;
+  --blue-600: #0284c7;
+  --blue-100: #e0f2fe;
+
+  /* neutrals */
+  --ink: #18241d;
+  --muted: #5f6f66;
+  --line: #e3eae4;
+  --bg: #f4f7f3;
+  --surface: #ffffff;
+
+  --radius: 12px;
+  --radius-sm: 9px;
+  --shadow: 0 1px 2px rgba(15, 61, 36, 0.06), 0 6px 18px rgba(15, 61, 36, 0.06);
+  --header-h: 64px;
+
+  --sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--green-700);
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+/* touch screens: no grey tap flash on links and buttons */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* honour the OS "reduce motion" setting — disable UI transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

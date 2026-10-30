@@ -1,0 +1,398 @@
+/* ------------------------------------------------------------------
+   App shell: header, sidebar navigation, main area, responsive drawer
+   ------------------------------------------------------------------ */
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- header ---------- */
+
+.app__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--header-h);
+  padding: 0 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(140deg, var(--green-600), var(--green-900));
+  color: var(--amber-200);
+  flex: none;
+}
+
+.brand__name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--green-900);
+  white-space: nowrap;
+}
+
+.brand__tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.header__spacer {
+  flex: 1;
+}
+
+.menu-btn,
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--green-800);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.menu-btn:hover,
+.icon-btn:hover {
+  background: var(--green-50);
+  border-color: var(--green-100);
+}
+
+.icon-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.chip--demo {
+  background: var(--amber-50);
+  border-color: var(--amber-200);
+  color: var(--amber-700);
+}
+
+.chip--api {
+  background: var(--green-50);
+  border-color: var(--green-100);
+  color: var(--green-700);
+}
+
+.chip--offline {
+  background: var(--red-100);
+  border-color: #fecaca;
+  color: var(--red-600);
+}
+
+/* ---------- body / sidebar ---------- */
+
+.app__body {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  padding: 14px 12px 24px;
+  background: var(--green-950);
+  color: #cfe3d6;
+}
+
+.sidebar__close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: 0 0 8px auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9px;
+  background: transparent;
+  color: #e7f3ea;
+}
+
+.nav__section {
+  padding: 14px 12px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7fa590;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav__btn {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: #d3e7da;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* the global green focus ring is hard to see on the dark sidebar */
+.sidebar :focus-visible {
+  outline-color: var(--amber-200);
+}
+
+.nav__btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.nav__btn.is-active {
+  background: var(--green-600);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav__btn svg {
+  flex: none;
+  opacity: 0.9;
+}
+
+.nav__badge {
+  margin-left: auto;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--amber-500);
+  color: #3b2500;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sidebar__note {
+  margin-top: 22px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  line-height: 1.45;
+  color: #a9c6b5;
+}
+
+.sidebar__note strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--amber-200);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scrim {
+  display: none;
+}
+
+/* ---------- main ---------- */
+
+.main {
+  width: 100%;
+  max-width: 1180px;
+  padding: 24px;
+}
+
+.demo-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius);
+  background: var(--amber-50);
+  color: #7a4a05;
+  font-size: 13.5px;
+}
+
+.demo-banner svg {
+  flex: none;
+  margin-top: 1px;
+}
+
+.demo-banner strong {
+  color: var(--amber-700);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .menu-btn {
+    display: inline-flex;
+  }
+
+  /* bigger tap targets for the drawer navigation */
+  .nav__btn {
+    min-height: 44px;
+  }
+
+  .brand__tag {
+    display: none;
+  }
+
+  .app__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 60;
+    width: 268px;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.18s ease;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar__close {
+    display: inline-flex;
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    border: 0;
+    background: rgba(9, 25, 16, 0.5);
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .chip--api {
+    display: none;
+  }
+}
+
+/* language switcher (EN / हिं) in the header */
+.lang-toggle {
+  display: inline-flex;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.lang-toggle button {
+  border: 0;
+  background: transparent;
+  height: 30px;
+  padding: 0 11px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-toggle button:hover {
+  background: var(--green-50);
+  color: var(--green-800);
+}
+
+.lang-toggle button.is-active {
+  background: var(--green-600);
+  color: #ffffff;
+}
+
+@media (max-width: 560px) {
+  .app__header {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .lang-toggle button {
+    height: 34px;
+    padding: 0 10px;
+  }
+
+  /* easier-to-tap header controls */
+  .menu-btn,
+  .icon-btn {
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .brand__name {
+    font-size: 15px;
+  }
+
+  .chip {
+    padding: 4px 9px;
+    font-size: 11px;
+  }
+}
