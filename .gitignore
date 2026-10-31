@@ -57,3 +57,6 @@ htmlcov/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Freebuff local workspace metadata
+.freebuff/
